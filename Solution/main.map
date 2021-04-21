@@ -1,0 +1,1138 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           
+     00000000  l__CABS                         
+     00000000  l__CODE_0                       
+     00000000  l__DABS                         
+     00000000  l__FONT_HEADER                  
+     00000000  l__HEADER                       
+     00000000  l__HEADER_LCD                   
+     00000000  l__HEAP                         
+     00000000  l__HRAM                         
+     00000000  l__LIT                          
+     00000000  s__CABS                         
+     00000000  s__DABS                         
+     00000000  s__FONT_HEADER                  
+     00000000  s__FONT_HEADER0                 
+     00000000  s__HEADER                       
+     00000000  s__HEADER0                      
+     00000000  s__HEADER1                      
+     00000000  s__HEADER10                     
+     00000000  s__HEADER2                      
+     00000000  s__HEADER3                      
+     00000000  s__HEADER4                      
+     00000000  s__HEADER5                      
+     00000000  s__HEADER6                      
+     00000000  s__HEADER7                      
+     00000000  s__HEADER8                      
+     00000000  s__HEADER9                      
+     00000000  s__HEADER_LCD                   
+     00000000  s__HEADER_LCD0                  
+     00000000  s__HEADERa                      
+     00000000  s__HEADERb                      
+     00000000  s__HEADERc                      
+     00000000  s__HEADERd                      
+     00000000  s__HEADERe                      
+     00000000  s__HEADERf                      
+     00000000  s__HRAM                         
+     00000000  s__HRAM11                       
+     00000001  l__GSFINAL                      
+     00000001  l__HEADER0                      
+     00000001  l__HEADER10                     
+     00000001  l__HEADER8                      
+     00000001  l__HEADER9                      
+     00000001  l__HEADERa                      
+     00000001  l__HEADERc                      
+     00000001  l__HEADERd                      
+     00000002  l__HEADERb                      
+     00000002  l__HEADERe                      
+     00000002  l__HRAM11                       
+     00000003  l__FONT_HEADER0                 
+     00000003  l__HEADER7                      
+     00000003  l__HEADER_LCD0                  
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000005  l__HEADER1                      
+     00000006  l__HEADER6                      
+     00000007  l__HEADER2                      
+     00000008  l__HEADER3                      
+     0000002C  l__HEADER4                      
+     00000033  l__HEADER5                      
+     0000003B  l__DATA                         
+     00000045  l__BSS                          
+     0000007E  l__HEADERf                      
+     000000A8  l__HOME                         
+     000000F5  l__GSINIT                       
+     00000200  s__CODE                         
+     000007A9  l__BASE                         
+     000008E9  l__CODE                         
+     00000AE9  s__HOME                         
+     00000B91  s__BASE                         
+     0000133A  s__CODE_0                       
+     0000133A  s__GSINIT                       
+     0000133A  s__LIT                          
+     0000142F  s__GSFINAL                      
+     0000C000  _shadow_OAM                     
+     0000C0A0  s__DATA                         
+     0000C0DB  s__BSS                          
+     0000C120  s__HEAP                         
+     0000E000  .STACK                          
+     0000FF80  .refresh_OAM                    
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000200  A$main$264                         main
+     00000200  C$mainMenuConfiguration.c$11$1_0   main
+     00000200  C$mainMenuConfiguration.c$9$0_0$   main
+     00000200  G$mainMenuInitialization$0$0       main
+     00000200  _mainMenuInitialization            main
+     00000203  A$main$265                         main
+     00000204  A$main$266                         main
+     00000205  A$main$267                         main
+     00000206  A$main$271                         main
+     00000206  C$mainMenuConfiguration.c$13$2_0   main
+     00000208  A$main$279                         main
+     00000208  C$mainMenuConfiguration.c$18$1_0   main
+     00000208  XG$mainMenuInitialization$0$0      main
+     00000209  A$main$292                         main
+     00000209  C$mainMenuConfiguration.c$22$1_0   main
+     00000209  C$mainMenuConfiguration.c$24$1_0   main
+     00000209  G$mainMenuCoreLoop$0$0             main
+     00000209  _mainMenuCoreLoop                  main
+     0000020C  A$main$303                         main
+     0000020C  C$mainMenuConfiguration.c$26$1_0   main
+     0000020C  C$mainMenuConfiguration.c$27$1_0   main
+     0000020C  XG$mainMenuCoreLoop$0$0            main
+     0000020F  A$main$313                         main
+     0000020F  C$roomConfiguration.c$25$1_0$101   main
+     0000020F  G$generateRoom$0$0                 main
+     0000020F  _generateRoom                      main
+     00000210  A$main$317                         main
+     00000210  C$roomConfiguration.c$27$1_0$101   main
+     00000213  A$main$318                         main
+     00000214  A$main$319                         main
+     00000217  A$main$323                         main
+     00000217  C$roomConfiguration.c$29$2_0$102   main
+     0000021A  A$main$324                         main
+     0000021B  A$main$325                         main
+     0000021E  A$main$329                         main
+     00000221  A$main$330                         main
+     00000223  A$main$335                         main
+     00000223  C$roomConfiguration.c$33$5_0$105   main
+     00000226  A$main$336                         main
+     00000227  A$main$337                         main
+     00000229  A$main$338                         main
+     0000022A  A$main$342                         main
+     0000022A  C$roomConfiguration.c$35$5_0$105   main
+     0000022B  A$main$343                         main
+     0000022D  A$main$344                         main
+     0000022E  A$main$345                         main
+     0000022F  A$main$346                         main
+     00000232  A$main$347                         main
+     00000233  A$main$348                         main
+     00000236  A$main$349                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000238  A$main$350                         main
+     0000023B  A$main$351                         main
+     0000023C  A$main$352                         main
+     0000023F  A$main$353                         main
+     00000241  A$main$354                         main
+     00000242  A$main$358                         main
+     00000242  C$roomConfiguration.c$37$5_0$105   main
+     00000243  A$main$359                         main
+     00000244  A$main$360                         main
+     00000247  A$main$364                         main
+     00000247  C$roomConfiguration.c$39$1_0$101   main
+     00000249  A$main$365                         main
+     0000024A  A$main$367                         main
+     0000024C  A$main$368                         main
+     0000024D  A$main$369                         main
+     0000024E  A$main$370                         main
+     00000251  A$main$374                         main
+     00000251  C$roomConfiguration.c$41$8_0$108   main
+     00000252  A$main$375                         main
+     00000254  A$main$376                         main
+     00000255  A$main$377                         main
+     00000258  A$main$378                         main
+     00000259  A$main$379                         main
+     0000025C  A$main$380                         main
+     0000025E  A$main$381                         main
+     00000261  A$main$382                         main
+     00000262  A$main$383                         main
+     00000265  A$main$384                         main
+     00000267  A$main$388                         main
+     00000267  C$roomConfiguration.c$43$8_0$108   main
+     0000026A  A$main$389                         main
+     0000026B  A$main$390                         main
+     0000026E  A$main$391                         main
+     0000026F  A$main$392                         main
+     00000270  A$main$393                         main
+     00000271  A$main$394                         main
+     00000272  A$main$395                         main
+     00000273  A$main$396                         main
+     00000274  A$main$397                         main
+     00000277  A$main$398                         main
+     00000279  A$main$399                         main
+     0000027A  A$main$400                         main
+     0000027B  A$main$401                         main
+     0000027C  A$main$402                         main
+     0000027F  A$main$403                         main
+     00000281  A$main$404                         main
+     00000282  A$main$405                         main
+     00000284  A$main$406                         main
+     00000287  A$main$407                         main
+     00000288  A$main$411                         main
+     00000288  C$roomConfiguration.c$45$8_0$108   main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000289  A$main$412                         main
+     0000028B  A$main$413                         main
+     0000028C  A$main$414                         main
+     0000028F  A$main$415                         main
+     00000290  A$main$416                         main
+     00000293  A$main$417                         main
+     00000295  A$main$418                         main
+     00000298  A$main$419                         main
+     00000299  A$main$420                         main
+     0000029C  A$main$421                         main
+     0000029E  A$main$425                         main
+     000002A1  A$main$426                         main
+     000002A2  A$main$427                         main
+     000002A4  A$main$431                         main
+     000002A4  C$roomConfiguration.c$50$1_0$101   main
+     000002A7  A$main$432                         main
+     000002A8  A$main$436                         main
+     000002AB  A$main$437                         main
+     000002AC  A$main$438                         main
+     000002AE  A$main$442                         main
+     000002AE  C$roomConfiguration.c$51$1_0$101   main
+     000002B1  A$main$443                         main
+     000002B2  A$main$447                         main
+     000002B2  C$roomConfiguration.c$47$8_0$108   main
+     000002B5  A$main$448                         main
+     000002B7  A$main$449                         main
+     000002B9  A$main$450                         main
+     000002BB  A$main$451                         main
+     000002BD  A$main$452                         main
+     000002C0  A$main$457                         main
+     000002C0  C$roomConfiguration.c$49$9_0$109   main
+     000002C3  A$main$458                         main
+     000002C6  A$main$459                         main
+     000002C7  A$main$460                         main
+     000002CA  A$main$461                         main
+     000002CB  A$main$462                         main
+     000002CC  A$main$463                         main
+     000002CE  A$main$464                         main
+     000002CF  A$main$465                         main
+     000002D2  A$main$466                         main
+     000002D3  A$main$467                         main
+     000002D6  A$main$468                         main
+     000002D8  A$main$469                         main
+     000002DB  A$main$470                         main
+     000002DC  A$main$471                         main
+     000002DF  A$main$472                         main
+     000002E1  A$main$473                         main
+     000002E3  A$main$478                         main
+     000002E3  C$roomConfiguration.c$50$9_0$109   main
+     000002E4  A$main$479                         main
+     000002E6  A$main$480                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000002E9  A$main$481                         main
+     000002EA  A$main$482                         main
+     000002EB  A$main$483                         main
+     000002ED  A$main$484                         main
+     000002EE  A$main$485                         main
+     000002F1  A$main$486                         main
+     000002F2  A$main$487                         main
+     000002F5  A$main$488                         main
+     000002F7  A$main$489                         main
+     000002FA  A$main$490                         main
+     000002FB  A$main$491                         main
+     000002FE  A$main$492                         main
+     00000300  A$main$493                         main
+     00000302  A$main$498                         main
+     00000302  C$roomConfiguration.c$51$9_0$109   main
+     00000303  A$main$499                         main
+     00000304  A$main$500                         main
+     00000305  A$main$501                         main
+     00000306  A$main$502                         main
+     00000309  A$main$503                         main
+     0000030A  A$main$504                         main
+     0000030B  A$main$505                         main
+     0000030D  A$main$506                         main
+     0000030E  A$main$507                         main
+     00000311  A$main$508                         main
+     00000312  A$main$509                         main
+     00000315  A$main$510                         main
+     00000317  A$main$511                         main
+     0000031A  A$main$512                         main
+     0000031B  A$main$513                         main
+     0000031E  A$main$514                         main
+     00000320  A$main$515                         main
+     00000322  A$main$520                         main
+     00000322  C$roomConfiguration.c$52$9_0$109   main
+     00000323  A$main$521                         main
+     00000324  A$main$522                         main
+     00000325  A$main$523                         main
+     00000326  A$main$524                         main
+     00000327  A$main$525                         main
+     00000328  A$main$526                         main
+     0000032B  A$main$527                         main
+     0000032C  A$main$528                         main
+     0000032D  A$main$529                         main
+     0000032F  A$main$530                         main
+     00000330  A$main$531                         main
+     00000333  A$main$532                         main
+     00000334  A$main$533                         main
+     00000337  A$main$534                         main
+     00000339  A$main$535                         main
+     0000033C  A$main$536                         main
+     0000033D  A$main$537                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000340  A$main$538                         main
+     00000342  A$main$546                         main
+     00000342  C$roomConfiguration.c$53$8_0$108   main
+     00000342  C$roomConfiguration.c$55$8_0$108   main
+     00000345  A$main$547                         main
+     00000346  A$main$548                         main
+     00000347  A$main$549                         main
+     00000349  A$main$550                         main
+     0000034A  A$main$551                         main
+     0000034C  A$main$552                         main
+     0000034E  A$main$557                         main
+     0000034E  C$roomConfiguration.c$57$9_0$110   main
+     00000350  A$main$558                         main
+     00000353  A$main$559                         main
+     00000354  A$main$560                         main
+     00000355  A$main$561                         main
+     00000357  A$main$562                         main
+     00000359  A$main$563                         main
+     0000035A  A$main$564                         main
+     0000035D  A$main$565                         main
+     0000035E  A$main$569                         main
+     0000035E  C$roomConfiguration.c$59$9_0$110   main
+     00000361  A$main$570                         main
+     00000362  A$main$571                         main
+     00000364  A$main$576                         main
+     00000364  C$roomConfiguration.c$63$9_0$111   main
+     00000366  A$main$577                         main
+     00000369  A$main$578                         main
+     0000036A  A$main$579                         main
+     0000036B  A$main$580                         main
+     0000036D  A$main$581                         main
+     0000036F  A$main$582                         main
+     00000370  A$main$583                         main
+     00000373  A$main$584                         main
+     00000374  A$main$588                         main
+     00000374  C$roomConfiguration.c$65$9_0$111   main
+     00000377  A$main$589                         main
+     00000378  A$main$594                         main
+     00000378  C$roomConfiguration.c$39$7_0$107   main
+     0000037A  A$main$595                         main
+     0000037B  A$main$596                         main
+     0000037E  A$main$601                         main
+     0000037E  C$roomConfiguration.c$31$4_0$104   main
+     00000381  A$main$602                         main
+     00000382  A$main$603                         main
+     00000383  A$main$604                         main
+     00000385  A$main$605                         main
+     00000388  A$main$606                         main
+     0000038A  A$main$611                         main
+     0000038A  C$roomConfiguration.c$74$3_0$112   main
+     0000038D  A$main$612                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000390  A$main$613                         main
+     00000391  A$main$614                         main
+     00000392  A$main$615                         main
+     00000395  A$main$616                         main
+     00000397  A$main$617                         main
+     0000039A  A$main$618                         main
+     0000039B  A$main$622                         main
+     0000039B  C$roomConfiguration.c$76$3_0$112   main
+     0000039C  A$main$623                         main
+     0000039E  A$main$624                         main
+     0000039F  A$main$625                         main
+     000003A2  A$main$626                         main
+     000003A3  A$main$627                         main
+     000003A6  A$main$628                         main
+     000003A8  A$main$629                         main
+     000003AB  A$main$630                         main
+     000003AC  A$main$631                         main
+     000003AF  A$main$632                         main
+     000003B1  A$main$636                         main
+     000003B1  C$roomConfiguration.c$78$3_0$112   main
+     000003B3  A$main$637                         main
+     000003B6  A$main$638                         main
+     000003B7  A$main$639                         main
+     000003B9  A$main$640                         main
+     000003BB  A$main$645                         main
+     000003BC  A$main$650                         main
+     000003BC  C$roomConfiguration.c$81$1_0$101   main
+     000003BC  XG$generateRoom$0$0                main
+     000003BD  Fmain$__str_0$0_0$0                main
+     000003D0  Fmain$__str_1$0_0$0                main
+     000003D9  Fmain$__str_2$0_0$0                main
+     000003E9  Fmain$__str_3$0_0$0                main
+     000003F6  Fmain$__str_4$0_0$0                main
+     000003FA  A$main$688                         main
+     000003FA  C$roomConfiguration.c$83$1_0$114   main
+     000003FA  C$roomConfiguration.c$85$1_0$114   main
+     000003FA  G$roomInitialization$0$0           main
+     000003FA  _roomInitialization                main
+     000003FD  A$main$689                         main
+     000003FE  A$main$690                         main
+     000003FF  A$main$691                         main
+     00000400  A$main$695                         main
+     00000400  C$roomConfiguration.c$87$2_0$115   main
+     00000402  A$main$699                         main
+     00000402  C$roomConfiguration.c$89$2_0$115   main
+     00000405  A$main$700                         main
+     00000407  A$main$701                         main
+     00000408  A$main$702                         main
+     0000040A  A$main$706                         main
+     0000040A  C$roomConfiguration.c$91$2_0$115   main
+     0000040D  A$main$707                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000040E  A$main$708                         main
+     00000410  A$main$709                         main
+     00000411  A$main$710                         main
+     00000412  A$main$711                         main
+     00000413  A$main$712                         main
+     00000414  A$main$713                         main
+     00000415  A$main$714                         main
+     00000418  A$main$715                         main
+     0000041A  A$main$723                         main
+     0000041A  C$roomConfiguration.c$93$1_0$114   main
+     0000041A  XG$roomInitialization$0$0          main
+     0000041B  A$main$736                         main
+     0000041B  C$roomConfiguration.c$95$1_0$116   main
+     0000041B  C$roomConfiguration.c$97$1_0$116   main
+     0000041B  G$seedInitialization$0$0           main
+     0000041B  _seedInitialization                main
+     0000041E  A$main$737                         main
+     0000041F  A$main$738                         main
+     00000420  A$main$742                         main
+     00000420  C$roomConfiguration.c$99$2_0$117   main
+     00000423  A$main$743                         main
+     00000425  A$main$744                         main
+     00000427  A$main$748                         main
+     00000427  C$roomConfiguration.c$101$3_0$11   main
+     0000042A  A$main$749                         main
+     0000042C  A$main$753                         main
+     0000042C  C$roomConfiguration.c$103$3_0$11   main
+     0000042F  A$main$754                         main
+     00000430  A$main$755                         main
+     00000431  A$main$756                         main
+     00000432  A$main$757                         main
+     00000433  A$main$758                         main
+     00000436  A$main$759                         main
+     00000438  A$main$763                         main
+     00000438  C$roomConfiguration.c$105$3_0$11   main
+     0000043B  A$main$764                         main
+     0000043C  A$main$765                         main
+     0000043D  A$main$766                         main
+     0000043E  A$main$767                         main
+     0000043F  A$main$768                         main
+     00000442  A$main$769                         main
+     00000443  A$main$770                         main
+     00000446  A$main$771                         main
+     00000448  A$main$776                         main
+     00000448  C$roomConfiguration.c$108$2_0$11   main
+     0000044B  A$main$777                         main
+     0000044C  A$main$778                         main
+     0000044E  A$main$779                         main
+     0000044F  A$main$780                         main
+     00000450  A$main$781                         main
+     00000452  A$main$782                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000454  A$main$783                         main
+     00000457  A$main$784                         main
+     00000459  A$main$785                         main
+     0000045A  A$main$786                         main
+     0000045C  A$main$787                         main
+     0000045D  A$main$792                         main
+     0000045D  C$roomConfiguration.c$109$3_0$12   main
+     00000460  A$main$793                         main
+     00000461  A$main$794                         main
+     00000462  A$main$795                         main
+     00000463  A$main$796                         main
+     00000464  A$main$804                         main
+     00000464  C$roomConfiguration.c$111$1_0$11   main
+     00000464  XG$seedInitialization$0$0          main
+     00000465  Fmain$__str_5$0_0$0                main
+     0000047B  A$main$822                         main
+     0000047B  C$roomConfiguration.c$115$1_0$12   main
+     0000047B  C$roomConfiguration.c$117$1_0$12   main
+     0000047B  G$roomCoreLoop$0$0                 main
+     0000047B  _roomCoreLoop                      main
+     0000047E  A$main$826                         main
+     0000047E  C$roomConfiguration.c$119$1_0$12   main
+     00000481  A$main$830                         main
+     00000481  C$roomConfiguration.c$121$1_0$12   main
+     00000484  A$main$841                         main
+     00000484  C$roomConfiguration.c$123$1_0$12   main
+     00000484  C$roomConfiguration.c$124$1_0$12   main
+     00000484  XG$roomCoreLoop$0$0                main
+     00000487  A$main$858                         main
+     00000487  C$main.c$6$1_0$122                 main
+     00000487  C$main.c$7$1_0$122                 main
+     00000487  C$main.c$9$2_0$123                 main
+     00000487  G$main$0$0                         main
+     00000487  _main                              main
+     0000048A  A$main$869                         main
+     0000048A  C$main.c$12$1_0$122                main
+     0000048A  C$main.c$13$1_0$122                main
+     0000048A  XG$main$0$0                        main
+     0000048C  __mulsuchar                        
+     00000496  __muluschar                        
+     000004A0  __mulschar                         
+     000004B2  __muluchar                         
+     000004BE  __mulint                           
+     000004E4  _rand                              
+     000004E4  _randw                             
+     0000050F  __divsuchar                        
+     0000051E  __modsuchar                        
+     0000052A  __divuschar                        
+     0000053C  __moduschar                        
+     0000054C  __divschar                         
+     0000055A  __modschar                         
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00000200    000008E9 =        2281. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000566  __divsint                          
+     00000579  __modsint                          
+     0000058A  __divuchar                         
+     00000598  __moduchar                         
+     000005A4  __divuint                          
+     000005B7  __moduint                          
+     000005C8  .div8                              
+     000005C8  .mod8                              
+     000005D0  .div16                             
+     000005D0  .mod16                             
+     00000606  .divu8                             
+     00000606  .modu8                             
+     00000609  .divu16                            
+     00000609  .modu16                            
+     0000064A  _putchar                           font.ms
+     00000653  _setchar                           font.ms
+     0000065C  _gotoxy                            font.ms
+     00000667  _posx                              font.ms
+     00000678  _posy                              font.ms
+     00000733  ___printf                          sprintf
+     00000A43  _utoa                              itoa
+     00000A52  _itoa                              itoa
+     00000A61  .itoa                              itoa
+     00000A75  .utoa                              itoa
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER0                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000020  .call_hl                           Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER1                            00000000    00000005 =           5. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000028  .MemsetSmall                       Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER2                            00000000    00000007 =           7. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000030  .MemcpySmall                       Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER3                            00000000    00000008 =           8. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER4                            00000000    0000002C =          44. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000080  .int                               Runtime
+     0000008F  _wait_int_handler                  Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER5                            00000000    00000033 =          51. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER6                            00000000    00000006 =           6. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER7                            00000000    00000003 =           3. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER8                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER9                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERa                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERb                            00000000    00000002 =           2. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERc                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERd                            00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERe                            00000000    00000002 =           2. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADERf                            00000000    0000007E =         126. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000150  .reset                             Runtime
+     00000150  _reset                             Runtime
+     00000153  .code_start                        Runtime
+     000001B1  _exit                              Runtime
+     000001B5  _enable_interrupts                 Runtime
+     000001B7  _disable_interrupts                Runtime
+     000001B9  _set_interrupts                    Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER10                           00000000    00000001 =           1. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HOME                               00000AE9    000000A8 =         168. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000AE9  .remove_VBL                        Runtime
+     00000AEC  .remove_int                        Runtime
+     00000B09  .add_VBL                           Runtime
+     00000B0C  .add_int                           Runtime
+     00000B17  .wait_vbl_done                     Runtime
+     00000B17  _wait_vbl_done                     Runtime
+     00000B26  .display_off                       Runtime
+     00000B26  _display_off                       Runtime
+     00000B3D  _remove_VBL                        Runtime
+     00000B48  _add_VBL                           Runtime
+     00000B53  _printf                            printf
+     00000B6E  _sprintf                           sprintf
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_BASE                               00000B91    000007A9 =        1961. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000B91  .padup                             
+     00000B91  _waitpadup                         
+     00000BA1  .jpad                              
+     00000BA1  _joypad                            
+     00000BC9  _waitpad                           
+     00000BCC  .wait_pad                          
+     00000BD3  .delay                             
+     00000C0D  _delay                             
+     00000C16  _set_bkg_data                      
+     00000C16  _set_win_data                      
+     00000C1E  _set_sprite_data                   
+     00000C4E  _initrand                          
+     00000C50  .initrand                          
+     00000C59  _font_load_ibm                     font.ms
+     00000C60  font_copy_uncompressed             font.ms
+     00000C96  font_copy_compressed               font.ms
+     00000CE5  font_load                          font.ms
+     00000D2D  font_copy_current                  font.ms
+     00000D75  font_set                           font.ms
+     00000D82  .put_char                          font.ms
+     00000D9A  .out_char                          font.ms
+     00000DA0  .del_char                          font.ms
+     00000DF6  _font_load                         font.ms
+     00000E04  _font_set                          font.ms
+     00000E13  _font_init                         font.ms
+     00000E33  .cls                               font.ms
+     00000E33  _cls                               font.ms
+     00000E65  .cr_curs                           font.ms
+     00000E7A  .adv_curs                          font.ms
+     00000ED6  .tmode                             font.ms
+     00000EFF  .tmode_out                         font.ms
+     00000F0F  _color                             
+     00000F1E  .drawing_vbl                       
+     00000F29  .drawing_lcd                       
+     00000F65  _add_LCD                           
+     00000F70  .add_LCD                           
+     00000F76  _remove_LCD                        
+     00000F81  .remove_LCD                        
+     00000F87  _font_ibm                          
+     00001339  ___sdcc_call_hl                    
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             0000133A    000000F5 =         245. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000133A  A$main$114                         main
+     0000133A  C$mainMenuConfiguration.c$6$1_0$   main
+     0000133A  gsinit                             Runtime
+     0000133D  A$main$115                         main
+     0000133F  A$main$119                         main
+     0000133F  C$mainMenuConfiguration.c$7$1_0$   main
+     00001342  A$main$120                         main
+     00001344  A$main$124                         main
+     00001344  C$gBTDRoomSprites.c$26$1_0$122     main
+     00001347  A$main$125                         main
+     00001349  A$main$126                         main
+     0000134C  A$main$127                         main
+     0000134E  A$main$128                         main
+     00001351  A$main$129                         main
+     00001353  A$main$130                         main
+     00001356  A$main$131                         main
+     00001358  A$main$132                         main
+     0000135B  A$main$133                         main
+     0000135D  A$main$134                         main
+     00001360  A$main$135                         main
+     00001362  A$main$136                         main
+     00001365  A$main$137                         main
+     00001367  A$main$138                         main
+     0000136A  A$main$139                         main
+     0000136C  A$main$140                         main
+     0000136F  A$main$141                         main
+     00001371  A$main$142                         main
+     00001374  A$main$143                         main
+     00001376  A$main$144                         main
+     00001379  A$main$145                         main
+     0000137B  A$main$146                         main
+     0000137E  A$main$147                         main
+     00001380  A$main$148                         main
+     00001383  A$main$149                         main
+     00001385  A$main$150                         main
+     00001388  A$main$151                         main
+     0000138A  A$main$152                         main
+     0000138D  A$main$153                         main
+     0000138F  A$main$154                         main
+     00001392  A$main$155                         main
+     00001394  A$main$156                         main
+     00001397  A$main$157                         main
+     00001399  A$main$158                         main
+     0000139C  A$main$159                         main
+     0000139E  A$main$160                         main
+     000013A1  A$main$161                         main
+     000013A3  A$main$162                         main
+     000013A6  A$main$163                         main
+     000013A8  A$main$164                         main
+     000013AB  A$main$165                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             0000133A    000000F5 =         245. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000013AD  A$main$166                         main
+     000013B0  A$main$167                         main
+     000013B2  A$main$168                         main
+     000013B5  A$main$169                         main
+     000013B7  A$main$170                         main
+     000013BA  A$main$171                         main
+     000013BC  A$main$172                         main
+     000013BF  A$main$173                         main
+     000013C1  A$main$174                         main
+     000013C4  A$main$175                         main
+     000013C6  A$main$176                         main
+     000013C9  A$main$177                         main
+     000013CB  A$main$178                         main
+     000013CE  A$main$179                         main
+     000013D0  A$main$180                         main
+     000013D3  A$main$181                         main
+     000013D5  A$main$182                         main
+     000013D8  A$main$183                         main
+     000013DA  A$main$184                         main
+     000013DD  A$main$185                         main
+     000013DF  A$main$186                         main
+     000013E2  A$main$187                         main
+     000013E4  A$main$191                         main
+     000013E4  C$roomConfiguration.c$7$1_0$122    main
+     000013E7  A$main$192                         main
+     000013E9  A$main$196                         main
+     000013E9  C$roomConfiguration.c$8$1_0$122    main
+     000013EC  A$main$197                         main
+     000013EE  A$main$201                         main
+     000013EE  C$roomConfiguration.c$10$1_0$122   main
+     000013F1  A$main$202                         main
+     000013F3  A$main$206                         main
+     000013F6  A$main$207                         main
+     000013F8  A$main$211                         main
+     000013F8  C$roomConfiguration.c$11$1_0$122   main
+     000013FB  A$main$212                         main
+     000013FD  A$main$216                         main
+     000013FD  C$roomConfiguration.c$12$1_0$122   main
+     00001400  A$main$217                         main
+     00001402  A$main$221                         main
+     00001405  A$main$222                         main
+     00001407  A$main$226                         main
+     00001407  C$roomConfiguration.c$13$1_0$122   main
+     0000140A  A$main$227                         main
+     0000140C  A$main$231                         main
+     0000140F  A$main$232                         main
+     00001411  A$main$236                         main
+     00001411  C$roomConfiguration.c$16$1_0$122   main
+     00001414  A$main$237                         main
+     00001416  A$main$241                         main
+     00001416  C$roomConfiguration.c$17$1_0$122   main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSINIT                             0000133A    000000F5 =         245. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00001419  A$main$242                         main
+ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_GSFINAL                            0000142F    00000001 =           1. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_DATA                               0000C0A0    0000003B =          59. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000C0A0  G$hasMainMenuBeenInitialized$0_0   main
+     0000C0A0  _hasMainMenuBeenInitialized        main
+     0000C0A1  G$hasPressedStart$0_0$0            main
+     0000C0A1  _hasPressedStart                   main
+     0000C0A2  G$roomSprites$0_0$0                main
+     0000C0A2  _roomSprites                       main
+     0000C0C2  G$hasRoomBeenInitialized$0_0$0     main
+     0000C0C2  _hasRoomBeenInitialized            main
+     0000C0C3  G$hasSeedBeenInitialized$0_0$0     main
+     0000C0C3  _hasSeedBeenInitialized            main
+     0000C0C4  G$indexCounter$0_0$0               main
+     0000C0C4  _indexCounter                      main
+     0000C0C5  G$roomHeightMin$0_0$0              main
+     0000C0C5  _roomHeightMin                     main
+     0000C0C6  G$roomHeightMax$0_0$0              main
+     0000C0C6  _roomHeightMax                     main
+     0000C0C7  G$roomWidthAndHeightRandomized$0   main
+     0000C0C7  _roomWidthAndHeightRandomized      main
+     0000C0C8  G$roomWidthMin$0_0$0               main
+     0000C0C8  _roomWidthMin                      main
+     0000C0C9  G$roomWidthMax$0_0$0               main
+     0000C0C9  _roomWidthMax                      main
+     0000C0CA  G$sSTTIC$0_0$0                     main
+     0000C0CA  _sSTTIC                            main
+     0000C0CB  G$sOSTTIC$0_0$0                    main
+     0000C0CB  _sOSTTIC                           main
+     0000C0CC  G$tileIndexPoint$0_0$0             main
+     0000C0CC  _tileIndexPoint                    main
+     0000C0CD  G$sSTTIP$0_0$0                     main
+     0000C0CD  _sSTTIP                            main
+     0000C0D3  G$sOSTTIP$0_0$0                    main
+     0000C0D3  _sOSTTIP                           main
+     0000C0D9  G$seed$0_0$0                       main
+     0000C0D9  _seed                              main
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_BSS                                0000C0DB    00000045 =          69. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000C0DB  __cpu                              Runtime
+     0000C0DC  .mode                              Runtime
+     0000C0DD  .sys_time                          Runtime
+     0000C0DD  _sys_time                          Runtime
+     0000C0DF  .int_0x40                          Runtime
+     0000C0F3  .randhi                            
+     0000C0F4  .randlo                            
+     0000C0F5  font_current                       font.ms
+     0000C0F8  font_first_free_tile               font.ms
+     0000C0F9  font_table                         font.ms
+     0000C10B  .curx                              font.ms
+     0000C10C  .cury                              font.ms
+     0000C10D  .fg_colour                         
+     0000C10E  .bg_colour                         
+     0000C10F  .draw_mode                         
+     0000C110  .int_0x48                          
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEAP                               0000C120    00000000 =           0. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000C120  _malloc_heap_start                 Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HRAM11                             00000000    00000002 =           2. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000FF90  __current_bank                     Runtime
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_FONT_HEADER0                       00000000    00000003 =           3. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_HEADER_LCD0                        00000000    00000003 =           3. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
+
+Files Linked                              [ module(s) ]
+
+c:\gbdk\lib/small/asxxxx/gb/crt0.o        [ Runtime ]
+main.o                                    [ main ]
+
+
+Libraries Linked                          [ object file ]
+
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ mul.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ pad.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ delay.o ]
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ printf.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ set_data.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ rand.o ]
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ div.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ font.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ color.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ drawing_isr.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ lcd.o ]
+c:\gbdk\lib/small/asxxxx/gb/gb.lib        [ f_ibm_sh.o ]
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ sprintf.o ]
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ itoa.o ]
+c:\gbdk\lib/small/asxxxx/gbz80/gbz80.lib  [ __sdcc_call_hl.o ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
+
+User Base Address Definitions
+
+_DATA=0xc0a0
+_CODE=0x0200
+ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
+
+User Global Definitions
+
+_shadow_OAM=0xC000
+.STACK=0xE000
+.refresh_OAM=0xFF80
+
+

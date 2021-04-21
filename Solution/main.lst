@@ -1,0 +1,877 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.0.7 #12016 (MINGW64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module main
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _main
+                                     12 	.globl _roomCoreLoop
+                                     13 	.globl _seedInitialization
+                                     14 	.globl _roomInitialization
+                                     15 	.globl _generateRoom
+                                     16 	.globl _mainMenuCoreLoop
+                                     17 	.globl _mainMenuInitialization
+                                     18 	.globl _randw
+                                     19 	.globl _initrand
+                                     20 	.globl _printf
+                                     21 	.globl _set_bkg_data
+                                     22 	.globl _wait_vbl_done
+                                     23 	.globl _joypad
+                                     24 	.globl _delay
+                                     25 	.globl _seed
+                                     26 	.globl _sOSTTIP
+                                     27 	.globl _sSTTIP
+                                     28 	.globl _tileIndexPoint
+                                     29 	.globl _sOSTTIC
+                                     30 	.globl _sSTTIC
+                                     31 	.globl _roomWidthMax
+                                     32 	.globl _roomWidthMin
+                                     33 	.globl _roomWidthAndHeightRandomized
+                                     34 	.globl _roomHeightMax
+                                     35 	.globl _roomHeightMin
+                                     36 	.globl _indexCounter
+                                     37 	.globl _hasSeedBeenInitialized
+                                     38 	.globl _hasRoomBeenInitialized
+                                     39 	.globl _roomSprites
+                                     40 	.globl _hasPressedStart
+                                     41 	.globl _hasMainMenuBeenInitialized
+                                     42 ;--------------------------------------------------------
+                                     43 ; special function registers
+                                     44 ;--------------------------------------------------------
+                                     45 ;--------------------------------------------------------
+                                     46 ; ram data
+                                     47 ;--------------------------------------------------------
+                                     48 	.area _DATA
+                           000000    49 G$hasMainMenuBeenInitialized$0_0$0==.
+      000000                         50 _hasMainMenuBeenInitialized::
+      000000                         51 	.ds 1
+                           000001    52 G$hasPressedStart$0_0$0==.
+      000001                         53 _hasPressedStart::
+      000001                         54 	.ds 1
+                           000002    55 G$roomSprites$0_0$0==.
+      000002                         56 _roomSprites::
+      000002                         57 	.ds 32
+                           000022    58 G$hasRoomBeenInitialized$0_0$0==.
+      000022                         59 _hasRoomBeenInitialized::
+      000022                         60 	.ds 1
+                           000023    61 G$hasSeedBeenInitialized$0_0$0==.
+      000023                         62 _hasSeedBeenInitialized::
+      000023                         63 	.ds 1
+                           000024    64 G$indexCounter$0_0$0==.
+      000024                         65 _indexCounter::
+      000024                         66 	.ds 1
+                           000025    67 G$roomHeightMin$0_0$0==.
+      000025                         68 _roomHeightMin::
+      000025                         69 	.ds 1
+                           000026    70 G$roomHeightMax$0_0$0==.
+      000026                         71 _roomHeightMax::
+      000026                         72 	.ds 1
+                           000027    73 G$roomWidthAndHeightRandomized$0_0$0==.
+      000027                         74 _roomWidthAndHeightRandomized::
+      000027                         75 	.ds 1
+                           000028    76 G$roomWidthMin$0_0$0==.
+      000028                         77 _roomWidthMin::
+      000028                         78 	.ds 1
+                           000029    79 G$roomWidthMax$0_0$0==.
+      000029                         80 _roomWidthMax::
+      000029                         81 	.ds 1
+                           00002A    82 G$sSTTIC$0_0$0==.
+      00002A                         83 _sSTTIC::
+      00002A                         84 	.ds 1
+                           00002B    85 G$sOSTTIC$0_0$0==.
+      00002B                         86 _sOSTTIC::
+      00002B                         87 	.ds 1
+                           00002C    88 G$tileIndexPoint$0_0$0==.
+      00002C                         89 _tileIndexPoint::
+      00002C                         90 	.ds 1
+                           00002D    91 G$sSTTIP$0_0$0==.
+      00002D                         92 _sSTTIP::
+      00002D                         93 	.ds 6
+                           000033    94 G$sOSTTIP$0_0$0==.
+      000033                         95 _sOSTTIP::
+      000033                         96 	.ds 6
+                           000039    97 G$seed$0_0$0==.
+      000039                         98 _seed::
+      000039                         99 	.ds 2
+                                    100 ;--------------------------------------------------------
+                                    101 ; absolute external ram data
+                                    102 ;--------------------------------------------------------
+                                    103 	.area _DABS (ABS)
+                                    104 ;--------------------------------------------------------
+                                    105 ; global & static initialisations
+                                    106 ;--------------------------------------------------------
+                                    107 	.area _HOME
+                                    108 	.area _GSINIT
+                                    109 	.area _GSFINAL
+                                    110 	.area _GSINIT
+                           000000   111 	C$mainMenuConfiguration.c$6$1_0$122	= .
+                                    112 	.globl	C$mainMenuConfiguration.c$6$1_0$122
+                                    113 ;mainMenuConfiguration.c:6: BOOLEAN hasMainMenuBeenInitialized = FALSE;
+      000000 21r00r00               114 	ld	hl, #_hasMainMenuBeenInitialized
+      000003 36 00                  115 	ld	(hl), #0x00
+                           000005   116 	C$mainMenuConfiguration.c$7$1_0$122	= .
+                                    117 	.globl	C$mainMenuConfiguration.c$7$1_0$122
+                                    118 ;mainMenuConfiguration.c:7: BOOLEAN hasPressedStart = FALSE;
+      000005 21r01r00               119 	ld	hl, #_hasPressedStart
+      000008 36 00                  120 	ld	(hl), #0x00
+                           00000A   121 	C$gBTDRoomSprites.c$26$1_0$122	= .
+                                    122 	.globl	C$gBTDRoomSprites.c$26$1_0$122
+                                    123 ;gBTDRoomSprites.c:26: unsigned char roomSprites[] =
+      00000A 21r02r00               124 	ld	hl, #_roomSprites
+      00000D 36 00                  125 	ld	(hl), #0x00
+      00000F 21r03r00               126 	ld	hl, #(_roomSprites + 0x0001)
+      000012 36 00                  127 	ld	(hl), #0x00
+      000014 21r04r00               128 	ld	hl, #(_roomSprites + 0x0002)
+      000017 36 00                  129 	ld	(hl), #0x00
+      000019 21r05r00               130 	ld	hl, #(_roomSprites + 0x0003)
+      00001C 36 00                  131 	ld	(hl), #0x00
+      00001E 21r06r00               132 	ld	hl, #(_roomSprites + 0x0004)
+      000021 36 00                  133 	ld	(hl), #0x00
+      000023 21r07r00               134 	ld	hl, #(_roomSprites + 0x0005)
+      000026 36 00                  135 	ld	(hl), #0x00
+      000028 21r08r00               136 	ld	hl, #(_roomSprites + 0x0006)
+      00002B 36 00                  137 	ld	(hl), #0x00
+      00002D 21r09r00               138 	ld	hl, #(_roomSprites + 0x0007)
+      000030 36 00                  139 	ld	(hl), #0x00
+      000032 21r0Ar00               140 	ld	hl, #(_roomSprites + 0x0008)
+      000035 36 00                  141 	ld	(hl), #0x00
+      000037 21r0Br00               142 	ld	hl, #(_roomSprites + 0x0009)
+      00003A 36 00                  143 	ld	(hl), #0x00
+      00003C 21r0Cr00               144 	ld	hl, #(_roomSprites + 0x000a)
+      00003F 36 00                  145 	ld	(hl), #0x00
+      000041 21r0Dr00               146 	ld	hl, #(_roomSprites + 0x000b)
+      000044 36 00                  147 	ld	(hl), #0x00
+      000046 21r0Er00               148 	ld	hl, #(_roomSprites + 0x000c)
+      000049 36 00                  149 	ld	(hl), #0x00
+      00004B 21r0Fr00               150 	ld	hl, #(_roomSprites + 0x000d)
+      00004E 36 00                  151 	ld	(hl), #0x00
+      000050 21r10r00               152 	ld	hl, #(_roomSprites + 0x000e)
+      000053 36 00                  153 	ld	(hl), #0x00
+      000055 21r11r00               154 	ld	hl, #(_roomSprites + 0x000f)
+      000058 36 00                  155 	ld	(hl), #0x00
+      00005A 21r12r00               156 	ld	hl, #(_roomSprites + 0x0010)
+      00005D 36 FF                  157 	ld	(hl), #0xff
+      00005F 21r13r00               158 	ld	hl, #(_roomSprites + 0x0011)
+      000062 36 FF                  159 	ld	(hl), #0xff
+      000064 21r14r00               160 	ld	hl, #(_roomSprites + 0x0012)
+      000067 36 81                  161 	ld	(hl), #0x81
+      000069 21r15r00               162 	ld	hl, #(_roomSprites + 0x0013)
+      00006C 36 FF                  163 	ld	(hl), #0xff
+      00006E 21r16r00               164 	ld	hl, #(_roomSprites + 0x0014)
+      000071 36 BD                  165 	ld	(hl), #0xbd
+      000073 21r17r00               166 	ld	hl, #(_roomSprites + 0x0015)
+      000076 36 C3                  167 	ld	(hl), #0xc3
+      000078 21r18r00               168 	ld	hl, #(_roomSprites + 0x0016)
+      00007B 36 A5                  169 	ld	(hl), #0xa5
+      00007D 21r19r00               170 	ld	hl, #(_roomSprites + 0x0017)
+      000080 36 C3                  171 	ld	(hl), #0xc3
+      000082 21r1Ar00               172 	ld	hl, #(_roomSprites + 0x0018)
+      000085 36 A5                  173 	ld	(hl), #0xa5
+      000087 21r1Br00               174 	ld	hl, #(_roomSprites + 0x0019)
+      00008A 36 C3                  175 	ld	(hl), #0xc3
+      00008C 21r1Cr00               176 	ld	hl, #(_roomSprites + 0x001a)
+      00008F 36 BD                  177 	ld	(hl), #0xbd
+      000091 21r1Dr00               178 	ld	hl, #(_roomSprites + 0x001b)
+      000094 36 C3                  179 	ld	(hl), #0xc3
+      000096 21r1Er00               180 	ld	hl, #(_roomSprites + 0x001c)
+      000099 36 81                  181 	ld	(hl), #0x81
+      00009B 21r1Fr00               182 	ld	hl, #(_roomSprites + 0x001d)
+      00009E 36 FF                  183 	ld	(hl), #0xff
+      0000A0 21r20r00               184 	ld	hl, #(_roomSprites + 0x001e)
+      0000A3 36 FF                  185 	ld	(hl), #0xff
+      0000A5 21r21r00               186 	ld	hl, #(_roomSprites + 0x001f)
+      0000A8 36 FF                  187 	ld	(hl), #0xff
+                           0000AA   188 	C$roomConfiguration.c$7$1_0$122	= .
+                                    189 	.globl	C$roomConfiguration.c$7$1_0$122
+                                    190 ;roomConfiguration.c:7: BOOLEAN hasRoomBeenInitialized = FALSE;
+      0000AA 21r22r00               191 	ld	hl, #_hasRoomBeenInitialized
+      0000AD 36 00                  192 	ld	(hl), #0x00
+                           0000AF   193 	C$roomConfiguration.c$8$1_0$122	= .
+                                    194 	.globl	C$roomConfiguration.c$8$1_0$122
+                                    195 ;roomConfiguration.c:8: BOOLEAN hasSeedBeenInitialized = FALSE;
+      0000AF 21r23r00               196 	ld	hl, #_hasSeedBeenInitialized
+      0000B2 36 00                  197 	ld	(hl), #0x00
+                           0000B4   198 	C$roomConfiguration.c$10$1_0$122	= .
+                                    199 	.globl	C$roomConfiguration.c$10$1_0$122
+                                    200 ;roomConfiguration.c:10: UINT8 indexCounter = 0;
+      0000B4 21r24r00               201 	ld	hl, #_indexCounter
+      0000B7 36 00                  202 	ld	(hl), #0x00
+                           0000B9   203 	C$roomConfiguration.c$11$1_0$122	= .
+                                    204 	.globl	C$roomConfiguration.c$11$1_0$122
+                                    205 ;roomConfiguration.c:11: UINT8 roomHeightMin = 0, roomHeightMax = 0;
+      0000B9 21r25r00               206 	ld	hl, #_roomHeightMin
+      0000BC 36 00                  207 	ld	(hl), #0x00
+                           0000BE   208 	C$roomConfiguration.c$11$1_0$122	= .
+                                    209 	.globl	C$roomConfiguration.c$11$1_0$122
+                                    210 ;roomConfiguration.c:11: UINT8 roomWidthAndHeightRandomized = 0;
+      0000BE 21r26r00               211 	ld	hl, #_roomHeightMax
+      0000C1 36 00                  212 	ld	(hl), #0x00
+                           0000C3   213 	C$roomConfiguration.c$12$1_0$122	= .
+                                    214 	.globl	C$roomConfiguration.c$12$1_0$122
+                                    215 ;roomConfiguration.c:12: UINT8 roomWidthMin = 0, roomWidthMax = 0;
+      0000C3 21r27r00               216 	ld	hl, #_roomWidthAndHeightRandomized
+      0000C6 36 00                  217 	ld	(hl), #0x00
+                           0000C8   218 	C$roomConfiguration.c$13$1_0$122	= .
+                                    219 	.globl	C$roomConfiguration.c$13$1_0$122
+                                    220 ;roomConfiguration.c:13: // sectorAndSectorTwoTileIndexCounter = s.S.T.T.I.C.
+      0000C8 21r28r00               221 	ld	hl, #_roomWidthMin
+      0000CB 36 00                  222 	ld	(hl), #0x00
+                           0000CD   223 	C$roomConfiguration.c$13$1_0$122	= .
+                                    224 	.globl	C$roomConfiguration.c$13$1_0$122
+                                    225 ;roomConfiguration.c:13: UINT8 roomWidthMin = 0, roomWidthMax = 0;
+      0000CD 21r29r00               226 	ld	hl, #_roomWidthMax
+      0000D0 36 00                  227 	ld	(hl), #0x00
+                           0000D2   228 	C$roomConfiguration.c$16$1_0$122	= .
+                                    229 	.globl	C$roomConfiguration.c$16$1_0$122
+                                    230 ;roomConfiguration.c:16: UINT8 sSTTIC = 0, sOSTTIC = 0;
+      0000D2 21r2Ar00               231 	ld	hl, #_sSTTIC
+      0000D5 36 00                  232 	ld	(hl), #0x00
+                           0000D7   233 	C$roomConfiguration.c$16$1_0$122	= .
+                                    234 	.globl	C$roomConfiguration.c$16$1_0$122
+                                    235 ;roomConfiguration.c:16: UINT8 tileIndexPoint = 0;
+      0000D7 21r2Br00               236 	ld	hl, #_sOSTTIC
+      0000DA 36 00                  237 	ld	(hl), #0x00
+                           0000DC   238 	C$roomConfiguration.c$17$1_0$122	= .
+                                    239 	.globl	C$roomConfiguration.c$17$1_0$122
+                                    240 ;roomConfiguration.c:17: 
+      0000DC 21r2Cr00               241 	ld	hl, #_tileIndexPoint
+      0000DF 36 00                  242 	ld	(hl), #0x00
+                                    243 ;--------------------------------------------------------
+                                    244 ; Home
+                                    245 ;--------------------------------------------------------
+                                    246 	.area _HOME
+                                    247 	.area _HOME
+                                    248 ;--------------------------------------------------------
+                                    249 ; code
+                                    250 ;--------------------------------------------------------
+                                    251 	.area _CODE
+                           000000   252 	G$mainMenuInitialization$0$0	= .
+                                    253 	.globl	G$mainMenuInitialization$0$0
+                           000000   254 	C$mainMenuConfiguration.c$9$0_0$98	= .
+                                    255 	.globl	C$mainMenuConfiguration.c$9$0_0$98
+                                    256 ;mainMenuConfiguration.c:9: void mainMenuInitialization()
+                                    257 ;	---------------------------------
+                                    258 ; Function mainMenuInitialization
+                                    259 ; ---------------------------------
+      000000                        260 _mainMenuInitialization::
+                           000000   261 	C$mainMenuConfiguration.c$11$1_0$98	= .
+                                    262 	.globl	C$mainMenuConfiguration.c$11$1_0$98
+                                    263 ;mainMenuConfiguration.c:11: if(!hasMainMenuBeenInitialized)
+      000000 21r00r00               264 	ld	hl, #_hasMainMenuBeenInitialized
+      000003 7E                     265 	ld	a, (hl)
+      000004 B7                     266 	or	a, a
+      000005 C0                     267 	ret	NZ
+                           000006   268 	C$mainMenuConfiguration.c$13$2_0$99	= .
+                                    269 	.globl	C$mainMenuConfiguration.c$13$2_0$99
+                                    270 ;mainMenuConfiguration.c:13: hasMainMenuBeenInitialized = TRUE;
+      000006 36 01                  271 	ld	(hl), #0x01
+                           000008   272 	C$mainMenuConfiguration.c$18$1_0$98	= .
+                                    273 	.globl	C$mainMenuConfiguration.c$18$1_0$98
+                                    274 ;mainMenuConfiguration.c:18: }
+                           000008   275 	C$mainMenuConfiguration.c$18$1_0$98	= .
+                                    276 	.globl	C$mainMenuConfiguration.c$18$1_0$98
+                           000008   277 	XG$mainMenuInitialization$0$0	= .
+                                    278 	.globl	XG$mainMenuInitialization$0$0
+      000008 C9                     279 	ret
+                           000009   280 	G$mainMenuCoreLoop$0$0	= .
+                                    281 	.globl	G$mainMenuCoreLoop$0$0
+                           000009   282 	C$mainMenuConfiguration.c$22$1_0$100	= .
+                                    283 	.globl	C$mainMenuConfiguration.c$22$1_0$100
+                                    284 ;mainMenuConfiguration.c:22: void mainMenuCoreLoop()
+                                    285 ;	---------------------------------
+                                    286 ; Function mainMenuCoreLoop
+                                    287 ; ---------------------------------
+      000009                        288 _mainMenuCoreLoop::
+                           000009   289 	C$mainMenuConfiguration.c$24$1_0$100	= .
+                                    290 	.globl	C$mainMenuConfiguration.c$24$1_0$100
+                                    291 ;mainMenuConfiguration.c:24: mainMenuInitialization();
+      000009 CDr00r00               292 	call	_mainMenuInitialization
+                           00000C   293 	C$mainMenuConfiguration.c$26$1_0$100	= .
+                                    294 	.globl	C$mainMenuConfiguration.c$26$1_0$100
+                                    295 ;mainMenuConfiguration.c:26: wait_vbl_done();
+                           00000C   296 	C$mainMenuConfiguration.c$27$1_0$100	= .
+                                    297 	.globl	C$mainMenuConfiguration.c$27$1_0$100
+                                    298 ;mainMenuConfiguration.c:27: }
+                           00000C   299 	C$mainMenuConfiguration.c$27$1_0$100	= .
+                                    300 	.globl	C$mainMenuConfiguration.c$27$1_0$100
+                           00000C   301 	XG$mainMenuCoreLoop$0$0	= .
+                                    302 	.globl	XG$mainMenuCoreLoop$0$0
+      00000C C3r00r00               303 	jp  _wait_vbl_done
+                           00000F   304 	G$generateRoom$0$0	= .
+                                    305 	.globl	G$generateRoom$0$0
+                           00000F   306 	C$roomConfiguration.c$25$1_0$101	= .
+                                    307 	.globl	C$roomConfiguration.c$25$1_0$101
+                                    308 ;roomConfiguration.c:25: void generateRoom()
+                                    309 ;	---------------------------------
+                                    310 ; Function generateRoom
+                                    311 ; ---------------------------------
+      00000F                        312 _generateRoom::
+      00000F 3B                     313 	dec	sp
+                           000010   314 	C$roomConfiguration.c$27$1_0$101	= .
+                                    315 	.globl	C$roomConfiguration.c$27$1_0$101
+                                    316 ;roomConfiguration.c:27: if(hasSeedBeenInitialized)
+      000010 FAr23r00               317 	ld	a, (#_hasSeedBeenInitialized)
+      000013 B7                     318 	or	a, a
+      000014 CArBBr01               319 	jp	Z, 00126$
+                           000017   320 	C$roomConfiguration.c$29$2_0$102	= .
+                                    321 	.globl	C$roomConfiguration.c$29$2_0$102
+                                    322 ;roomConfiguration.c:29: if(roomWidthAndHeightRandomized != 0)
+      000017 FAr27r00               323 	ld	a, (#_roomWidthAndHeightRandomized)
+      00001A B7                     324 	or	a, a
+      00001B CAr8Ar01               325 	jp	Z, 00117$
+                           00001E   326 	C$roomConfiguration.c$31$4_0$104	= .
+                                    327 	.globl	C$roomConfiguration.c$31$4_0$104
+                                    328 ;roomConfiguration.c:31: for(indexCounter = 0; indexCounter < 4; indexCounter++)
+      00001E 21r24r00               329 	ld	hl, #_indexCounter
+      000021 36 00                  330 	ld	(hl), #0x00
+      000023                        331 00124$:
+                           000023   332 	C$roomConfiguration.c$33$5_0$105	= .
+                                    333 	.globl	C$roomConfiguration.c$33$5_0$105
+                                    334 ;roomConfiguration.c:33: UINT8 sectorPoints = randw() % 4;
+      000023 CDr00r00               335 	call	_randw
+      000026 7B                     336 	ld	a, e
+      000027 E6 03                  337 	and	a, #0x03
+      000029 4F                     338 	ld	c, a
+                           00002A   339 	C$roomConfiguration.c$35$5_0$105	= .
+                                    340 	.globl	C$roomConfiguration.c$35$5_0$105
+                                    341 ;roomConfiguration.c:35: printf("sectorPoints = %d\n", (UINT16)sectorPoints); delay(999); 
+      00002A 59                     342 	ld	e, c
+      00002B 16 00                  343 	ld	d, #0x00
+      00002D C5                     344 	push	bc
+      00002E D5                     345 	push	de
+      00002F 21rBDr01               346 	ld	hl, #___str_0
+      000032 E5                     347 	push	hl
+      000033 CDr00r00               348 	call	_printf
+      000036 E8 04                  349 	add	sp, #4
+      000038 21 E7 03               350 	ld	hl, #0x03e7
+      00003B E5                     351 	push	hl
+      00003C CDr00r00               352 	call	_delay
+      00003F E8 02                  353 	add	sp, #2
+      000041 C1                     354 	pop	bc
+                           000042   355 	C$roomConfiguration.c$37$5_0$105	= .
+                                    356 	.globl	C$roomConfiguration.c$37$5_0$105
+                                    357 ;roomConfiguration.c:37: if(sectorPoints != 0)
+      000042 79                     358 	ld	a, c
+      000043 B7                     359 	or	a, a
+      000044 CAr7Er01               360 	jp	Z, 00125$
+                           000047   361 	C$roomConfiguration.c$39$1_0$101	= .
+                                    362 	.globl	C$roomConfiguration.c$39$1_0$101
+                                    363 ;roomConfiguration.c:39: for(sectorPoints; sectorPoints > 0; sectorPoints--)
+      000047 F8 00                  364 	ldhl	sp,	#0
+      000049 71                     365 	ld	(hl), c
+      00004A                        366 00122$:
+      00004A F8 00                  367 	ldhl	sp,	#0
+      00004C 7E                     368 	ld	a, (hl)
+      00004D B7                     369 	or	a, a
+      00004E CAr7Er01               370 	jp	Z, 00125$
+                           000051   371 	C$roomConfiguration.c$41$8_0$108	= .
+                                    372 	.globl	C$roomConfiguration.c$41$8_0$108
+                                    373 ;roomConfiguration.c:41: printf("sP = %d\n", (UINT16)sectorPoints); delay(999); 
+      000051 4E                     374 	ld	c, (hl)
+      000052 06 00                  375 	ld	b, #0x00
+      000054 C5                     376 	push	bc
+      000055 21rD0r01               377 	ld	hl, #___str_1
+      000058 E5                     378 	push	hl
+      000059 CDr00r00               379 	call	_printf
+      00005C E8 04                  380 	add	sp, #4
+      00005E 21 E7 03               381 	ld	hl, #0x03e7
+      000061 E5                     382 	push	hl
+      000062 CDr00r00               383 	call	_delay
+      000065 E8 02                  384 	add	sp, #2
+                           000067   385 	C$roomConfiguration.c$43$8_0$108	= .
+                                    386 	.globl	C$roomConfiguration.c$43$8_0$108
+                                    387 ;roomConfiguration.c:43: tileIndexPoint = randw() % (roomWidthAndHeightRandomized * roomWidthAndHeightRandomized) - 1; 
+      000067 CDr00r00               388 	call	_randw
+      00006A D5                     389 	push	de
+      00006B 21r27r00               390 	ld	hl, #_roomWidthAndHeightRandomized
+      00006E 7E                     391 	ld	a, (hl)
+      00006F F5                     392 	push	af
+      000070 33                     393 	inc	sp
+      000071 7E                     394 	ld	a, (hl)
+      000072 F5                     395 	push	af
+      000073 33                     396 	inc	sp
+      000074 CDr00r00               397 	call	__muluchar
+      000077 E8 02                  398 	add	sp, #2
+      000079 C1                     399 	pop	bc
+      00007A D5                     400 	push	de
+      00007B C5                     401 	push	bc
+      00007C CDr00r00               402 	call	__moduint
+      00007F E8 04                  403 	add	sp, #4
+      000081 7B                     404 	ld	a, e
+      000082 C6 FF                  405 	add	a, #0xff
+      000084 21r2Cr00               406 	ld	hl, #_tileIndexPoint
+      000087 77                     407 	ld	(hl), a
+                           000088   408 	C$roomConfiguration.c$45$8_0$108	= .
+                                    409 	.globl	C$roomConfiguration.c$45$8_0$108
+                                    410 ;roomConfiguration.c:45: printf("tileInPoi = %d\n", (UINT16)tileIndexPoint); delay(999); 
+      000088 4E                     411 	ld	c, (hl)
+      000089 06 00                  412 	ld	b, #0x00
+      00008B C5                     413 	push	bc
+      00008C 21rD9r01               414 	ld	hl, #___str_2
+      00008F E5                     415 	push	hl
+      000090 CDr00r00               416 	call	_printf
+      000093 E8 04                  417 	add	sp, #4
+      000095 21 E7 03               418 	ld	hl, #0x03e7
+      000098 E5                     419 	push	hl
+      000099 CDr00r00               420 	call	_delay
+      00009C E8 02                  421 	add	sp, #2
+                           00009E   422 	C$roomConfiguration.c$47$8_0$108	= .
+                                    423 	.globl	C$roomConfiguration.c$47$8_0$108
+                                    424 ;roomConfiguration.c:47: switch(indexCounter)
+      00009E FAr24r00               425 	ld	a, (#_indexCounter)
+      0000A1 B7                     426 	or	a, a
+      0000A2 28 1C                  427 	jr	Z, 00101$
+                           0000A4   428 	C$roomConfiguration.c$50$1_0$101	= .
+                                    429 	.globl	C$roomConfiguration.c$50$1_0$101
+                                    430 ;roomConfiguration.c:50: case 1: tileIndexPoint += 473; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      0000A4 21r2Cr00               431 	ld	hl, #_tileIndexPoint
+      0000A7 46                     432 	ld	b, (hl)
+                           0000A8   433 	C$roomConfiguration.c$47$8_0$108	= .
+                                    434 	.globl	C$roomConfiguration.c$47$8_0$108
+                                    435 ;roomConfiguration.c:47: switch(indexCounter)
+      0000A8 FAr24r00               436 	ld	a, (#_indexCounter)
+      0000AB 3D                     437 	dec	a
+      0000AC 28 35                  438 	jr	Z, 00102$
+                           0000AE   439 	C$roomConfiguration.c$51$1_0$101	= .
+                                    440 	.globl	C$roomConfiguration.c$51$1_0$101
+                                    441 ;roomConfiguration.c:51: case 2: tileIndexPoint += roomWidthAndHeightRandomized * 3; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      0000AE 21r27r00               442 	ld	hl, #_roomWidthAndHeightRandomized
+      0000B1 4E                     443 	ld	c, (hl)
+                           0000B2   444 	C$roomConfiguration.c$47$8_0$108	= .
+                                    445 	.globl	C$roomConfiguration.c$47$8_0$108
+                                    446 ;roomConfiguration.c:47: switch(indexCounter)
+      0000B2 FAr24r00               447 	ld	a,(#_indexCounter)
+      0000B5 FE 02                  448 	cp	a,#0x02
+      0000B7 28 49                  449 	jr	Z, 00103$
+      0000B9 D6 03                  450 	sub	a, #0x03
+      0000BB 28 65                  451 	jr	Z, 00104$
+      0000BD C3r42r01               452 	jp	00105$
+                           0000C0   453 	C$roomConfiguration.c$49$9_0$109	= .
+                                    454 	.globl	C$roomConfiguration.c$49$9_0$109
+                                    455 ;roomConfiguration.c:49: case 0: tileIndexPoint += roomWidthAndHeightRandomized; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      0000C0                        456 00101$:
+      0000C0 FAr2Cr00               457 	ld	a, (#_tileIndexPoint)
+      0000C3 21r27r00               458 	ld	hl, #_roomWidthAndHeightRandomized
+      0000C6 86                     459 	add	a, (hl)
+      0000C7 21r2Cr00               460 	ld	hl, #_tileIndexPoint
+      0000CA 77                     461 	ld	(hl), a
+      0000CB 4E                     462 	ld	c, (hl)
+      0000CC 06 00                  463 	ld	b, #0x00
+      0000CE C5                     464 	push	bc
+      0000CF 21rE9r01               465 	ld	hl, #___str_3
+      0000D2 E5                     466 	push	hl
+      0000D3 CDr00r00               467 	call	_printf
+      0000D6 E8 04                  468 	add	sp, #4
+      0000D8 21 E7 03               469 	ld	hl, #0x03e7
+      0000DB E5                     470 	push	hl
+      0000DC CDr00r00               471 	call	_delay
+      0000DF E8 02                  472 	add	sp, #2
+      0000E1 18 5F                  473 	jr	00105$
+                           0000E3   474 	C$roomConfiguration.c$50$9_0$109	= .
+                                    475 	.globl	C$roomConfiguration.c$50$9_0$109
+                                    476 ;roomConfiguration.c:50: case 1: tileIndexPoint += 473; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      0000E3                        477 00102$:
+      0000E3 78                     478 	ld	a, b
+      0000E4 C6 D9                  479 	add	a, #0xd9
+      0000E6 21r2Cr00               480 	ld	hl, #_tileIndexPoint
+      0000E9 77                     481 	ld	(hl), a
+      0000EA 4E                     482 	ld	c, (hl)
+      0000EB 06 00                  483 	ld	b, #0x00
+      0000ED C5                     484 	push	bc
+      0000EE 21rE9r01               485 	ld	hl, #___str_3
+      0000F1 E5                     486 	push	hl
+      0000F2 CDr00r00               487 	call	_printf
+      0000F5 E8 04                  488 	add	sp, #4
+      0000F7 21 E7 03               489 	ld	hl, #0x03e7
+      0000FA E5                     490 	push	hl
+      0000FB CDr00r00               491 	call	_delay
+      0000FE E8 02                  492 	add	sp, #2
+      000100 18 40                  493 	jr	00105$
+                           000102   494 	C$roomConfiguration.c$51$9_0$109	= .
+                                    495 	.globl	C$roomConfiguration.c$51$9_0$109
+                                    496 ;roomConfiguration.c:51: case 2: tileIndexPoint += roomWidthAndHeightRandomized * 3; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      000102                        497 00103$:
+      000102 79                     498 	ld	a, c
+      000103 87                     499 	add	a, a
+      000104 81                     500 	add	a, c
+      000105 80                     501 	add	a, b
+      000106 21r2Cr00               502 	ld	hl, #_tileIndexPoint
+      000109 77                     503 	ld	(hl), a
+      00010A 4E                     504 	ld	c, (hl)
+      00010B 06 00                  505 	ld	b, #0x00
+      00010D C5                     506 	push	bc
+      00010E 21rE9r01               507 	ld	hl, #___str_3
+      000111 E5                     508 	push	hl
+      000112 CDr00r00               509 	call	_printf
+      000115 E8 04                  510 	add	sp, #4
+      000117 21 E7 03               511 	ld	hl, #0x03e7
+      00011A E5                     512 	push	hl
+      00011B CDr00r00               513 	call	_delay
+      00011E E8 02                  514 	add	sp, #2
+      000120 18 20                  515 	jr	00105$
+                           000122   516 	C$roomConfiguration.c$52$9_0$109	= .
+                                    517 	.globl	C$roomConfiguration.c$52$9_0$109
+                                    518 ;roomConfiguration.c:52: case 3: tileIndexPoint += roomWidthAndHeightRandomized * 7; printf("newTIP = %d\n", (UINT16)tileIndexPoint); delay(999); break;
+      000122                        519 00104$:
+      000122 79                     520 	ld	a, c
+      000123 87                     521 	add	a, a
+      000124 81                     522 	add	a, c
+      000125 87                     523 	add	a, a
+      000126 81                     524 	add	a, c
+      000127 80                     525 	add	a, b
+      000128 21r2Cr00               526 	ld	hl, #_tileIndexPoint
+      00012B 77                     527 	ld	(hl), a
+      00012C 4E                     528 	ld	c, (hl)
+      00012D 06 00                  529 	ld	b, #0x00
+      00012F C5                     530 	push	bc
+      000130 21rE9r01               531 	ld	hl, #___str_3
+      000133 E5                     532 	push	hl
+      000134 CDr00r00               533 	call	_printf
+      000137 E8 04                  534 	add	sp, #4
+      000139 21 E7 03               535 	ld	hl, #0x03e7
+      00013C E5                     536 	push	hl
+      00013D CDr00r00               537 	call	_delay
+      000140 E8 02                  538 	add	sp, #2
+                           000142   539 	C$roomConfiguration.c$53$8_0$108	= .
+                                    540 	.globl	C$roomConfiguration.c$53$8_0$108
+                                    541 ;roomConfiguration.c:53: }
+      000142                        542 00105$:
+                           000142   543 	C$roomConfiguration.c$55$8_0$108	= .
+                                    544 	.globl	C$roomConfiguration.c$55$8_0$108
+                                    545 ;roomConfiguration.c:55: if(indexCounter == 0 || indexCounter == 2)
+      000142 21r24r00               546 	ld	hl, #_indexCounter
+      000145 7E                     547 	ld	a, (hl)
+      000146 B7                     548 	or	a, a
+      000147 28 05                  549 	jr	Z, 00106$
+      000149 7E                     550 	ld	a, (hl)
+      00014A D6 02                  551 	sub	a, #0x02
+      00014C 20 16                  552 	jr	NZ, 00107$
+      00014E                        553 00106$:
+                           00014E   554 	C$roomConfiguration.c$57$9_0$110	= .
+                                    555 	.globl	C$roomConfiguration.c$57$9_0$110
+                                    556 ;roomConfiguration.c:57: sSTTIP[sSTTIC] = tileIndexPoint;
+      00014E 3Er2D                  557 	ld	a, #<(_sSTTIP)
+      000150 21r2Ar00               558 	ld	hl, #_sSTTIC
+      000153 86                     559 	add	a, (hl)
+      000154 4F                     560 	ld	c, a
+      000155 3Es00                  561 	ld	a, #>(_sSTTIP)
+      000157 CE 00                  562 	adc	a, #0x00
+      000159 47                     563 	ld	b, a
+      00015A FAr2Cr00               564 	ld	a, (#_tileIndexPoint)
+      00015D 02                     565 	ld	(bc), a
+                           00015E   566 	C$roomConfiguration.c$59$9_0$110	= .
+                                    567 	.globl	C$roomConfiguration.c$59$9_0$110
+                                    568 ;roomConfiguration.c:59: sSTTIC += 1;
+      00015E 21r2Ar00               569 	ld	hl, #_sSTTIC
+      000161 34                     570 	inc	(hl)
+      000162 18 14                  571 	jr	00123$
+      000164                        572 00107$:
+                           000164   573 	C$roomConfiguration.c$63$9_0$111	= .
+                                    574 	.globl	C$roomConfiguration.c$63$9_0$111
+                                    575 ;roomConfiguration.c:63: sOSTTIP[sOSTTIC] = tileIndexPoint;
+      000164 3Er33                  576 	ld	a, #<(_sOSTTIP)
+      000166 21r2Br00               577 	ld	hl, #_sOSTTIC
+      000169 86                     578 	add	a, (hl)
+      00016A 4F                     579 	ld	c, a
+      00016B 3Es00                  580 	ld	a, #>(_sOSTTIP)
+      00016D CE 00                  581 	adc	a, #0x00
+      00016F 47                     582 	ld	b, a
+      000170 FAr2Cr00               583 	ld	a, (#_tileIndexPoint)
+      000173 02                     584 	ld	(bc), a
+                           000174   585 	C$roomConfiguration.c$65$9_0$111	= .
+                                    586 	.globl	C$roomConfiguration.c$65$9_0$111
+                                    587 ;roomConfiguration.c:65: sOSTTIC += 1;
+      000174 21r2Br00               588 	ld	hl, #_sOSTTIC
+      000177 34                     589 	inc	(hl)
+      000178                        590 00123$:
+                           000178   591 	C$roomConfiguration.c$39$7_0$107	= .
+                                    592 	.globl	C$roomConfiguration.c$39$7_0$107
+                                    593 ;roomConfiguration.c:39: for(sectorPoints; sectorPoints > 0; sectorPoints--)
+      000178 F8 00                  594 	ldhl	sp,	#0
+      00017A 35                     595 	dec	(hl)
+      00017B C3r4Ar00               596 	jp	00122$
+      00017E                        597 00125$:
+                           00017E   598 	C$roomConfiguration.c$31$4_0$104	= .
+                                    599 	.globl	C$roomConfiguration.c$31$4_0$104
+                                    600 ;roomConfiguration.c:31: for(indexCounter = 0; indexCounter < 4; indexCounter++)
+      00017E 21r24r00               601 	ld	hl, #_indexCounter
+      000181 34                     602 	inc	(hl)
+      000182 7E                     603 	ld	a, (hl)
+      000183 D6 04                  604 	sub	a, #0x04
+      000185 DAr23r00               605 	jp	C, 00124$
+      000188 18 31                  606 	jr	00126$
+      00018A                        607 00117$:
+                           00018A   608 	C$roomConfiguration.c$74$3_0$112	= .
+                                    609 	.globl	C$roomConfiguration.c$74$3_0$112
+                                    610 ;roomConfiguration.c:74: roomWidthAndHeightRandomized = randw() % 18;
+      00018A CDr00r00               611 	call	_randw
+      00018D 21 12 00               612 	ld	hl, #0x0012
+      000190 E5                     613 	push	hl
+      000191 D5                     614 	push	de
+      000192 CDr00r00               615 	call	__moduint
+      000195 E8 04                  616 	add	sp, #4
+      000197 21r27r00               617 	ld	hl, #_roomWidthAndHeightRandomized
+      00019A 73                     618 	ld	(hl), e
+                           00019B   619 	C$roomConfiguration.c$76$3_0$112	= .
+                                    620 	.globl	C$roomConfiguration.c$76$3_0$112
+                                    621 ;roomConfiguration.c:76: printf("%d\n", (UINT16)roomWidthAndHeightRandomized); delay(25);
+      00019B 4E                     622 	ld	c, (hl)
+      00019C 06 00                  623 	ld	b, #0x00
+      00019E C5                     624 	push	bc
+      00019F 21rF6r01               625 	ld	hl, #___str_4
+      0001A2 E5                     626 	push	hl
+      0001A3 CDr00r00               627 	call	_printf
+      0001A6 E8 04                  628 	add	sp, #4
+      0001A8 21 19 00               629 	ld	hl, #0x0019
+      0001AB E5                     630 	push	hl
+      0001AC CDr00r00               631 	call	_delay
+      0001AF E8 02                  632 	add	sp, #2
+                           0001B1   633 	C$roomConfiguration.c$78$3_0$112	= .
+                                    634 	.globl	C$roomConfiguration.c$78$3_0$112
+                                    635 ;roomConfiguration.c:78: if(roomWidthAndHeightRandomized <= 9) { roomWidthAndHeightRandomized = 0; }
+      0001B1 3E 09                  636 	ld	a, #0x09
+      0001B3 21r27r00               637 	ld	hl, #_roomWidthAndHeightRandomized
+      0001B6 96                     638 	sub	a, (hl)
+      0001B7 38 02                  639 	jr	C, 00126$
+      0001B9 36 00                  640 	ld	(hl), #0x00
+      0001BB                        641 00126$:
+                           0001BB   642 	C$roomConfiguration.c$81$1_0$101	= .
+                                    643 	.globl	C$roomConfiguration.c$81$1_0$101
+                                    644 ;roomConfiguration.c:81: }
+      0001BB 33                     645 	inc	sp
+                           0001BC   646 	C$roomConfiguration.c$81$1_0$101	= .
+                                    647 	.globl	C$roomConfiguration.c$81$1_0$101
+                           0001BC   648 	XG$generateRoom$0$0	= .
+                                    649 	.globl	XG$generateRoom$0$0
+      0001BC C9                     650 	ret
+                           0001BD   651 Fmain$__str_0$0_0$0 == .
+      0001BD                        652 ___str_0:
+      0001BD 73 65 63 74 6F 72 50   653 	.ascii "sectorPoints = %d"
+             6F 69 6E 74 73 20 3D
+             20 25 64
+      0001CE 0A                     654 	.db 0x0a
+      0001CF 00                     655 	.db 0x00
+                           0001D0   656 Fmain$__str_1$0_0$0 == .
+      0001D0                        657 ___str_1:
+      0001D0 73 50 20 3D 20 25 64   658 	.ascii "sP = %d"
+      0001D7 0A                     659 	.db 0x0a
+      0001D8 00                     660 	.db 0x00
+                           0001D9   661 Fmain$__str_2$0_0$0 == .
+      0001D9                        662 ___str_2:
+      0001D9 74 69 6C 65 49 6E 50   663 	.ascii "tileInPoi = %d"
+             6F 69 20 3D 20 25 64
+      0001E7 0A                     664 	.db 0x0a
+      0001E8 00                     665 	.db 0x00
+                           0001E9   666 Fmain$__str_3$0_0$0 == .
+      0001E9                        667 ___str_3:
+      0001E9 6E 65 77 54 49 50 20   668 	.ascii "newTIP = %d"
+             3D 20 25 64
+      0001F4 0A                     669 	.db 0x0a
+      0001F5 00                     670 	.db 0x00
+                           0001F6   671 Fmain$__str_4$0_0$0 == .
+      0001F6                        672 ___str_4:
+      0001F6 25 64                  673 	.ascii "%d"
+      0001F8 0A                     674 	.db 0x0a
+      0001F9 00                     675 	.db 0x00
+                           0001FA   676 	G$roomInitialization$0$0	= .
+                                    677 	.globl	G$roomInitialization$0$0
+                           0001FA   678 	C$roomConfiguration.c$83$1_0$114	= .
+                                    679 	.globl	C$roomConfiguration.c$83$1_0$114
+                                    680 ;roomConfiguration.c:83: void roomInitialization()
+                                    681 ;	---------------------------------
+                                    682 ; Function roomInitialization
+                                    683 ; ---------------------------------
+      0001FA                        684 _roomInitialization::
+                           0001FA   685 	C$roomConfiguration.c$85$1_0$114	= .
+                                    686 	.globl	C$roomConfiguration.c$85$1_0$114
+                                    687 ;roomConfiguration.c:85: if(!hasRoomBeenInitialized)
+      0001FA 21r22r00               688 	ld	hl, #_hasRoomBeenInitialized
+      0001FD 7E                     689 	ld	a, (hl)
+      0001FE B7                     690 	or	a, a
+      0001FF C0                     691 	ret	NZ
+                           000200   692 	C$roomConfiguration.c$87$2_0$115	= .
+                                    693 	.globl	C$roomConfiguration.c$87$2_0$115
+                                    694 ;roomConfiguration.c:87: hasRoomBeenInitialized = TRUE;
+      000200 36 01                  695 	ld	(hl), #0x01
+                           000202   696 	C$roomConfiguration.c$89$2_0$115	= .
+                                    697 	.globl	C$roomConfiguration.c$89$2_0$115
+                                    698 ;roomConfiguration.c:89: seed = 0;
+      000202 21r39r00               699 	ld	hl, #_seed
+      000205 3E 00                  700 	ld	a, #0x00
+      000207 22                     701 	ld	(hl+), a
+      000208 36 00                  702 	ld	(hl), #0x00
+                           00020A   703 	C$roomConfiguration.c$91$2_0$115	= .
+                                    704 	.globl	C$roomConfiguration.c$91$2_0$115
+                                    705 ;roomConfiguration.c:91: set_bkg_data(0, 2, roomSprites);
+      00020A 21r02r00               706 	ld	hl, #_roomSprites
+      00020D E5                     707 	push	hl
+      00020E 3E 02                  708 	ld	a, #0x02
+      000210 F5                     709 	push	af
+      000211 33                     710 	inc	sp
+      000212 AF                     711 	xor	a, a
+      000213 F5                     712 	push	af
+      000214 33                     713 	inc	sp
+      000215 CDr00r00               714 	call	_set_bkg_data
+      000218 E8 04                  715 	add	sp, #4
+                           00021A   716 	C$roomConfiguration.c$93$1_0$114	= .
+                                    717 	.globl	C$roomConfiguration.c$93$1_0$114
+                                    718 ;roomConfiguration.c:93: }
+                           00021A   719 	C$roomConfiguration.c$93$1_0$114	= .
+                                    720 	.globl	C$roomConfiguration.c$93$1_0$114
+                           00021A   721 	XG$roomInitialization$0$0	= .
+                                    722 	.globl	XG$roomInitialization$0$0
+      00021A C9                     723 	ret
+                           00021B   724 	G$seedInitialization$0$0	= .
+                                    725 	.globl	G$seedInitialization$0$0
+                           00021B   726 	C$roomConfiguration.c$95$1_0$116	= .
+                                    727 	.globl	C$roomConfiguration.c$95$1_0$116
+                                    728 ;roomConfiguration.c:95: void seedInitialization()
+                                    729 ;	---------------------------------
+                                    730 ; Function seedInitialization
+                                    731 ; ---------------------------------
+      00021B                        732 _seedInitialization::
+                           00021B   733 	C$roomConfiguration.c$97$1_0$116	= .
+                                    734 	.globl	C$roomConfiguration.c$97$1_0$116
+                                    735 ;roomConfiguration.c:97: if(!hasSeedBeenInitialized)
+      00021B FAr23r00               736 	ld	a, (#_hasSeedBeenInitialized)
+      00021E B7                     737 	or	a, a
+      00021F C0                     738 	ret	NZ
+                           000220   739 	C$roomConfiguration.c$99$2_0$117	= .
+                                    740 	.globl	C$roomConfiguration.c$99$2_0$117
+                                    741 ;roomConfiguration.c:99: if(joypad() & J_A) 
+      000220 CDr00r00               742 	call	_joypad
+      000223 CB 63                  743 	bit	4, e
+      000225 28 21                  744 	jr	Z, 00102$
+                           000227   745 	C$roomConfiguration.c$101$3_0$118	= .
+                                    746 	.globl	C$roomConfiguration.c$101$3_0$118
+                                    747 ;roomConfiguration.c:101: hasSeedBeenInitialized = TRUE; 
+      000227 21r23r00               748 	ld	hl, #_hasSeedBeenInitialized
+      00022A 36 01                  749 	ld	(hl), #0x01
+                           00022C   750 	C$roomConfiguration.c$103$3_0$118	= .
+                                    751 	.globl	C$roomConfiguration.c$103$3_0$118
+                                    752 ;roomConfiguration.c:103: initrand(seed); 
+      00022C 21r39r00               753 	ld	hl, #_seed
+      00022F 2A                     754 	ld	a, (hl+)
+      000230 66                     755 	ld	h, (hl)
+      000231 6F                     756 	ld	l, a
+      000232 E5                     757 	push	hl
+      000233 CDr00r00               758 	call	_initrand
+      000236 E8 02                  759 	add	sp, #2
+                           000238   760 	C$roomConfiguration.c$105$3_0$118	= .
+                                    761 	.globl	C$roomConfiguration.c$105$3_0$118
+                                    762 ;roomConfiguration.c:105: printf("Seed Initialized! %d\n", seed); 
+      000238 21r39r00               763 	ld	hl, #_seed
+      00023B 2A                     764 	ld	a, (hl+)
+      00023C 66                     765 	ld	h, (hl)
+      00023D 6F                     766 	ld	l, a
+      00023E E5                     767 	push	hl
+      00023F 21r65r02               768 	ld	hl, #___str_5
+      000242 E5                     769 	push	hl
+      000243 CDr00r00               770 	call	_printf
+      000246 E8 04                  771 	add	sp, #4
+      000248                        772 00102$:
+                           000248   773 	C$roomConfiguration.c$108$2_0$117	= .
+                                    774 	.globl	C$roomConfiguration.c$108$2_0$117
+                                    775 ;roomConfiguration.c:108: if(seed >= 255){ seed = 0; }
+      000248 21r39r00               776 	ld	hl, #_seed
+      00024B 7E                     777 	ld	a, (hl)
+      00024C D6 FF                  778 	sub	a, #0xff
+      00024E 23                     779 	inc	hl
+      00024F 7E                     780 	ld	a, (hl)
+      000250 DE 00                  781 	sbc	a, #0x00
+      000252 38 09                  782 	jr	C, 00104$
+      000254 21r39r00               783 	ld	hl, #_seed
+      000257 3E 00                  784 	ld	a, #0x00
+      000259 22                     785 	ld	(hl+), a
+      00025A 36 00                  786 	ld	(hl), #0x00
+      00025C C9                     787 	ret
+      00025D                        788 00104$:
+                           00025D   789 	C$roomConfiguration.c$109$3_0$120	= .
+                                    790 	.globl	C$roomConfiguration.c$109$3_0$120
+                                    791 ;roomConfiguration.c:109: else{ seed += 1; }
+      00025D 21r39r00               792 	ld	hl, #_seed
+      000260 34                     793 	inc	(hl)
+      000261 C0                     794 	ret	NZ
+      000262 23                     795 	inc	hl
+      000263 34                     796 	inc	(hl)
+                           000264   797 	C$roomConfiguration.c$111$1_0$116	= .
+                                    798 	.globl	C$roomConfiguration.c$111$1_0$116
+                                    799 ;roomConfiguration.c:111: }
+                           000264   800 	C$roomConfiguration.c$111$1_0$116	= .
+                                    801 	.globl	C$roomConfiguration.c$111$1_0$116
+                           000264   802 	XG$seedInitialization$0$0	= .
+                                    803 	.globl	XG$seedInitialization$0$0
+      000264 C9                     804 	ret
+                           000265   805 Fmain$__str_5$0_0$0 == .
+      000265                        806 ___str_5:
+      000265 53 65 65 64 20 49 6E   807 	.ascii "Seed Initialized! %d"
+             69 74 69 61 6C 69 7A
+             65 64 21 20 25 64
+      000279 0A                     808 	.db 0x0a
+      00027A 00                     809 	.db 0x00
+                           00027B   810 	G$roomCoreLoop$0$0	= .
+                                    811 	.globl	G$roomCoreLoop$0$0
+                           00027B   812 	C$roomConfiguration.c$115$1_0$121	= .
+                                    813 	.globl	C$roomConfiguration.c$115$1_0$121
+                                    814 ;roomConfiguration.c:115: void roomCoreLoop()
+                                    815 ;	---------------------------------
+                                    816 ; Function roomCoreLoop
+                                    817 ; ---------------------------------
+      00027B                        818 _roomCoreLoop::
+                           00027B   819 	C$roomConfiguration.c$117$1_0$121	= .
+                                    820 	.globl	C$roomConfiguration.c$117$1_0$121
+                                    821 ;roomConfiguration.c:117: generateRoom();
+      00027B CDr0Fr00               822 	call	_generateRoom
+                           00027E   823 	C$roomConfiguration.c$119$1_0$121	= .
+                                    824 	.globl	C$roomConfiguration.c$119$1_0$121
+                                    825 ;roomConfiguration.c:119: roomInitialization();
+      00027E CDrFAr01               826 	call	_roomInitialization
+                           000281   827 	C$roomConfiguration.c$121$1_0$121	= .
+                                    828 	.globl	C$roomConfiguration.c$121$1_0$121
+                                    829 ;roomConfiguration.c:121: seedInitialization();
+      000281 CDr1Br02               830 	call	_seedInitialization
+                           000284   831 	C$roomConfiguration.c$123$1_0$121	= .
+                                    832 	.globl	C$roomConfiguration.c$123$1_0$121
+                                    833 ;roomConfiguration.c:123: wait_vbl_done();
+                           000284   834 	C$roomConfiguration.c$124$1_0$121	= .
+                                    835 	.globl	C$roomConfiguration.c$124$1_0$121
+                                    836 ;roomConfiguration.c:124: }
+                           000284   837 	C$roomConfiguration.c$124$1_0$121	= .
+                                    838 	.globl	C$roomConfiguration.c$124$1_0$121
+                           000284   839 	XG$roomCoreLoop$0$0	= .
+                                    840 	.globl	XG$roomCoreLoop$0$0
+      000284 C3r00r00               841 	jp  _wait_vbl_done
+                           000287   842 	G$main$0$0	= .
+                                    843 	.globl	G$main$0$0
+                           000287   844 	C$main.c$6$1_0$122	= .
+                                    845 	.globl	C$main.c$6$1_0$122
+                                    846 ;main.c:6: int main(){
+                                    847 ;	---------------------------------
+                                    848 ; Function main
+                                    849 ; ---------------------------------
+      000287                        850 _main::
+                           000287   851 	C$main.c$7$1_0$122	= .
+                                    852 	.globl	C$main.c$7$1_0$122
+                                    853 ;main.c:7: while (TRUE) 
+      000287                        854 00102$:
+                           000287   855 	C$main.c$9$2_0$123	= .
+                                    856 	.globl	C$main.c$9$2_0$123
+                                    857 ;main.c:9: roomCoreLoop();
+      000287 CDr7Br02               858 	call	_roomCoreLoop
+                           00028A   859 	C$main.c$12$1_0$122	= .
+                                    860 	.globl	C$main.c$12$1_0$122
+                                    861 ;main.c:12: return 0;
+                           00028A   862 	C$main.c$13$1_0$122	= .
+                                    863 	.globl	C$main.c$13$1_0$122
+                                    864 ;main.c:13: }
+                           00028A   865 	C$main.c$13$1_0$122	= .
+                                    866 	.globl	C$main.c$13$1_0$122
+                           00028A   867 	XG$main$0$0	= .
+                                    868 	.globl	XG$main$0$0
+      00028A 18 FB                  869 	jr	00102$
+                                    870 	.area _CODE
+                                    871 	.area _CABS (ABS)
